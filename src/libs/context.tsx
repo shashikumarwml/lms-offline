@@ -4,6 +4,8 @@ import getUserDetailsService, { getSubjectsService } from '../services/user';
 import {getAccessToken} from './utils';
 import {UserContextTypes, defaultValue} from '../types/context';
 import {ChildrenProps} from '../types/generic';
+import NetInfo from '@react-native-community/netinfo';
+
 
 export const UserContext = createContext<UserContextTypes>({});
 
@@ -40,9 +42,15 @@ export default function ContextProvider({children}: ChildrenProps) {
     setDetails({...details, accessToken, userDetails: userData});
   }
 
-  useEffect(() => {
-    getUserDetails();
+useEffect(() => {
+    NetInfo.addEventListener(async state => {
+       console.log('state: ', state.isConnected);
+      if (state.isConnected) {
+        getUserDetails();
+      }
+    })
   }, []);
+
 
   return (
     <UserContext.Provider value={{details, setDetails}}>

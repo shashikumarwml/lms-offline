@@ -4,6 +4,16 @@ export default async function getUserDetailsService(accessToken: string) {
   return await genericGetService('/auth/user/', accessToken);
 }
 
-export  async function getSubjectsService(accessToken: string) {
-  return await genericGetService('/student/enrollments/118/subjects/', accessToken);
+export async function getChaptersService(accessToken: string) {
+  return await genericGetService(
+    '/student/subjects/1286/chapters/',
+    accessToken,
+  );
+}
+
+export async function getTopicsService(accessToken: string, id) {
+  return await genericGetService(
+    `/student/topics/${id}/contents/`,
+    accessToken,
+  );
 }
