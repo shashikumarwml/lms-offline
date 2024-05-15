@@ -12,7 +12,8 @@ import {getSubjects, insertData} from '../../../db/subjects';
 import RNFS, {readFile, writeFile} from 'react-native-fs';
 import Loader from '../common/Loader';
 import {ActivityIndicator} from 'react-native-paper';
-import Video from 'react-native-video';
+import {Button} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import {Button} from 'react-native';
 import {getChaptersService, getTopicsService} from '../../services/user';
@@ -21,6 +22,7 @@ import {ScrollView} from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
 
 export default function Home() {
+  const navigation = useNavigation();
   const {
     details: {accessToken, subjects},
   }: any = useContext(UserContext);
@@ -131,6 +133,11 @@ export default function Home() {
       <TouchableOpacity onPress={() => getItems()}>
         <Text>Subjets</Text>
       </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => navigation.navigate('subjectDetails')}>
+        <Text>Subject Details</Text>
+      </TouchableOpacity>
+
       <TouchableOpacity onPress={() => downloadItems()}>
         <Text>Download</Text>
       </TouchableOpacity>

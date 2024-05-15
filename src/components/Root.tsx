@@ -5,6 +5,7 @@ import Loading from './Loading';
 import LoginForm from './auth/Login';
 import ContextProvider from '../libs/context';
 import Home from './dashboard/Home';
+import SubjectDetails from './dashboard/subjects/SubjectDetails';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +28,11 @@ function Root() {
             name="home"
             options={{headerShown: false}}
             component={Home}
+          />
+           <Stack.Screen
+            name="subjectDetails"
+            options={{headerShown: false}}
+            component={SubjectDetails}
           />
         </Stack.Navigator>
       </NavigationContainer>
