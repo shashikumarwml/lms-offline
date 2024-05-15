@@ -7,6 +7,7 @@ import RNFS from 'react-native-fs';
 import Loader from '../common/Loader';
 import {ActivityIndicator} from 'react-native-paper';
 import {Button} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 var files = [
   {
@@ -24,6 +25,7 @@ var files = [
 ];
 
 export default function Home() {
+  const navigation = useNavigation();
   const {
     details: {accessToken, subjects},
   }: any = useContext(UserContext);
@@ -97,6 +99,10 @@ export default function Home() {
       <Text>HOme</Text>
       <TouchableOpacity onPress={() => getItems()}>
         <Text>Subjets</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => navigation.navigate('subjectDetails')}>
+        <Text>Subject Details</Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => downloadItems()}>

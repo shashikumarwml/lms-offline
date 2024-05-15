@@ -67,7 +67,7 @@ export default function Login() {
           autoCapitalize="none"
           autoCompleteType="password"
           textContentType="password"
-          keyboardType="password"
+          // keyboardType="password"
           type="password"
           secureTextEntry={!showPassword}
         />
